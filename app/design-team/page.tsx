@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Design Team — Lukas Fleury",
+  description:
+    "WATFlight — University of Waterloo student design team building autonomous, sustainable aircraft. Member of the Mechanical team.",
+};
 
 const work = [
   {

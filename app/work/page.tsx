@@ -1,20 +1,26 @@
+import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import ExperienceCard, { Experience } from "@/components/ExperienceCard";
+
+export const metadata: Metadata = {
+  title: "Work — Lukas Fleury",
+  description:
+    "Engineering co-op experience: current Operations Engineer at LiftWerx (wind turbine repair), and Mammoet heavy-lift drawings for Bruce Power and Pickering Nuclear.",
+};
 
 const roles: Experience[] = [
   {
     role: "Operations Engineer Co-op",
     org: "LiftWerx",
     place: "Cambridge, ON",
-    period: "Aug–Dec 2026 · incoming",
+    period: "Aug–Dec 2026 · current",
     bullets: [
-      "Supporting the development of sustainable repair and maintenance solutions for wind turbines — work that extends the service life of renewable-energy infrastructure.",
-      "Helping plan and execute wind turbine repair and maintenance operations, balancing safety, efficiency, and sustainability across active wind farms.",
-      "Applying engineering principles to the renewable energy sector to keep clean-energy systems reliable over the long term.",
-      "Contributing to the up-tower lifting equipment and rigging processes that let major turbine components be serviced without a full crane teardown.",
-      "Gaining hands-on exposure to the operations, safety, and logistics side of renewable-energy infrastructure — from planning through on-site execution.",
+      "Own lift-plan production for 6 field crews across North America — procedures, crane load charts, rigging dimensions, and site layout, each approved in time for the crew's start date.",
+      "Plan replacements for major nacelle components — gearboxes, main and pitch bearings, hub sections, and full blade swaps — anything inside the nacelle that can be exchanged up-tower.",
+      "Between plans, take on design and drawing work. Currently designing and modelling a swamp-mat rack for the rear of a transport trailer — sized to stay firmly seated under heavy braking loads.",
+      "Handle engineering change notices (ECNs) and equipment documentation, building fluency with product data management (PDM) workflows across the engineering document lifecycle.",
     ],
-    tags: ["Wind Energy", "Operations", "Sustainability"],
+    tags: ["Wind Energy", "Lift Planning", "Design", "PDM"],
     image: {
       src: "/images/liftwerx-turbine.jpg",
       alt: "LiftWerx up-tower crane servicing a wind turbine hub",

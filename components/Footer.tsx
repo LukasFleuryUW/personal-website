@@ -68,7 +68,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-2 border-t border-white/5 pt-6 text-xs text-ink-subtle sm:flex-row sm:items-center">
           <span>© {new Date().getFullYear()} Lukas Fleury · Cambridge, ON</span>
-          <span className="font-mono">designed &amp; built by me</span>
+          <span className="font-mono">designed by me · coded with Claude</span>
         </div>
       </div>
     </footer>

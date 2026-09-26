@@ -1,33 +1,46 @@
+import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import ExperienceCard, { Experience } from "@/components/ExperienceCard";
 
+export const metadata: Metadata = {
+  title: "Projects — Lukas Fleury",
+  description:
+    "Personal builds: 5\" FPV quadcopter designed and PID-tuned from scratch, valvetronic dual-exit exhaust, and SkillsOntario precision machining.",
+};
+
 const projects: Experience[] = [
   {
-    role: "250 mm Arduino Quadcopter",
-    org: "From-scratch build + prop analysis",
+    role: "5\" FPV Quadcopter",
+    org: "From-scratch build + PID tuning",
     place: "Cambridge, ON",
     period: "2026",
     bullets: [
-      "Designed and built a 250 mm quadcopter from scratch — mechanical frame, electrical integration, and Arduino-based flight controller — under a hard cost ceiling.",
-      "Ran a structured experimental program on a static thrust stand: 2-blade vs. 3-blade props and low- vs. high-pitch geometries, comparing thrust, hover endurance, and step-response.",
-      "Used onboard accelerometer telemetry for FFT-based vibration analysis to tie prop geometry back to airframe response.",
-      "Treated the build as end-to-end product development — sourcing, soldering, electrical safety, controls tuning, and quantitative flight evaluation.",
+      "Built a 5-inch FPV racing-style quadcopter end-to-end — starting from an open-source frame in CAD, then designing my own propellers and a custom flight-controller adapter to fit the electronics stack.",
+      "3D-printed every frame component myself, iterating on fit and stiffness until the airframe held up to flight loads.",
+      "Selected and integrated the electronics: SpeedyBee F405 AIO flight controller, RS2205 brushless motors, FlySky radio link, and 3S 2200mAh LiPo packs.",
+      "Soldered every joint on the airframe myself — ESCs to motors, power distribution, receiver, and flight-controller harness — then configured and PID-tuned it in Betaflight to hit stable hover and controlled flight.",
+      "Treated it as end-to-end product development — mechanical design, electrical integration, controls tuning, and flight-test iteration.",
     ],
-    tags: ["Arduino", "Controls", "FFT Analysis", "Thrust Testing"],
+    tags: ["FPV", "Betaflight", "PID Tuning", "SolidWorks"],
     image: {
-      src: "/images/quadcoptor.jpg",
-      alt: "250 mm Arduino-controlled quadcopter build",
+      src: "/images/drone-1.jpg",
+      alt: "5-inch FPV quadcopter build — finished airframe",
+    },
+    video: {
+      src: "/images/drone-video.mp4",
+      poster: "/images/drone-video-poster.jpg",
+      alt: "FPV drone flight footage",
     },
   },
   {
     role: "Valvetronic Dual-Exit Exhaust",
     org: "Personal build",
     place: "Cambridge, ON",
-    period: "2025",
+    period: "2026 · ongoing",
     bullets: [
       "Designed a custom valvetronic-style flow-diverter in SolidWorks — dual-exit exhaust with an RF-actuated valve for a cabin-controlled toggle between quiet and open modes.",
       "Modelled the full exhaust routing from cat-back through the diverter to both exits.",
-      "Fabricated and installed the assembly end-to-end on my own vehicle.",
+      "Fabricating and installing the assembly end-to-end on my own vehicle — currently ongoing.",
     ],
     tags: ["SolidWorks", "RF Actuation", "Fabrication"],
     image: {

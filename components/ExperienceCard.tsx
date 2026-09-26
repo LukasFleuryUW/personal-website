@@ -1,5 +1,14 @@
 import Image from "next/image";
 
+export type MediaImage = { type?: "image"; src: string; alt: string };
+export type MediaVideo = {
+  type: "video";
+  src: string;
+  poster?: string;
+  alt: string;
+};
+export type Media = MediaImage | MediaVideo;
+
 export type Experience = {
   role: string;
   org: string;
@@ -8,8 +17,51 @@ export type Experience = {
   bullets: string[];
   tags?: string[];
   image?: { src: string; alt: string };
+  video?: { src: string; poster?: string; alt: string };
   imageLayout?: "side" | "wide";
 };
+
+function MediaTile({
+  media,
+  aspect,
+  sizes,
+  className,
+}: {
+  media: Media;
+  aspect: string;
+  sizes: string;
+  className?: string;
+}) {
+  const cls = `relative w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02] ${aspect} ${className ?? ""}`;
+  if (media.type === "video") {
+    return (
+      <div className={cls}>
+        <video
+          className="h-full w-full object-cover"
+          src={media.src}
+          poster={media.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label={media.alt}
+        />
+      </div>
+    );
+  }
+  return (
+    <div className={cls}>
+      <Image
+        src={media.src}
+        alt={media.alt}
+        fill
+        sizes={sizes}
+        className="object-cover"
+      />
+    </div>
+  );
+}
 
 export default function ExperienceCard({
   index,
@@ -19,6 +71,22 @@ export default function ExperienceCard({
   data: Experience;
 }) {
   const layout = data.imageLayout ?? "side";
+
+  const hasImage = !!data.image;
+  const hasVideo = !!data.video;
+  const hasBoth = hasImage && hasVideo;
+
+  const imageMedia: Media | null = data.image
+    ? { type: "image", src: data.image.src, alt: data.image.alt }
+    : null;
+  const videoMedia: Media | null = data.video
+    ? {
+        type: "video",
+        src: data.video.src,
+        poster: data.video.poster,
+        alt: data.video.alt,
+      }
+    : null;
 
   return (
     <article className="grid gap-6 border-t border-white/5 py-10 md:grid-cols-[140px_1fr] md:gap-12">
@@ -36,18 +104,42 @@ export default function ExperienceCard({
           <span className="text-lg text-ink-muted">{data.org}</span>
         </div>
 
-        {layout === "side" ? (
-          <div className="mt-6 grid gap-6 md:grid-cols-[280px_1fr] md:gap-8">
-            {data.image ? (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02] md:aspect-[3/4] md:max-w-[280px]">
-                <Image
-                  src={data.image.src}
-                  alt={data.image.alt}
-                  fill
-                  sizes="(min-width: 768px) 280px, 100vw"
-                  className="object-cover"
+        {hasBoth ? (
+          /* Bullets on top, then a 2-column media strip (photo + video) below */
+          <>
+            <ul className="mt-6 space-y-2 text-ink-muted">
+              {data.bullets.map((b, i) => (
+                <li key={i} className="flex gap-3 leading-relaxed">
+                  <span className="mt-2.5 h-px w-4 shrink-0 bg-white/20" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {imageMedia ? (
+                <MediaTile
+                  media={imageMedia}
+                  aspect="aspect-[4/5]"
+                  sizes="(min-width: 768px) 400px, 100vw"
                 />
-              </div>
+              ) : null}
+              {videoMedia ? (
+                <MediaTile
+                  media={videoMedia}
+                  aspect="aspect-[4/5]"
+                  sizes="(min-width: 768px) 400px, 100vw"
+                />
+              ) : null}
+            </div>
+          </>
+        ) : layout === "side" ? (
+          <div className="mt-6 grid gap-6 md:grid-cols-[280px_1fr] md:gap-8">
+            {(imageMedia || videoMedia) ? (
+              <MediaTile
+                media={(videoMedia ?? imageMedia)!}
+                aspect="aspect-[4/3] md:aspect-[3/4] md:max-w-[280px]"
+                sizes="(min-width: 768px) 280px, 100vw"
+              />
             ) : null}
 
             <ul className="space-y-2 text-ink-muted">
@@ -69,15 +161,29 @@ export default function ExperienceCard({
                 </li>
               ))}
             </ul>
-            {data.image ? (
+            {(imageMedia || videoMedia) ? (
               <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02]">
-                <Image
-                  src={data.image.src}
-                  alt={data.image.alt}
-                  fill
-                  sizes="(min-width: 768px) 720px, 100vw"
-                  className="object-contain"
-                />
+                {(videoMedia ?? imageMedia)!.type === "video" ? (
+                  <video
+                    className="h-full w-full object-contain"
+                    src={videoMedia!.src}
+                    poster={videoMedia!.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={videoMedia!.alt}
+                  />
+                ) : (
+                  <Image
+                    src={imageMedia!.src}
+                    alt={imageMedia!.alt}
+                    fill
+                    sizes="(min-width: 768px) 720px, 100vw"
+                    className="object-contain"
+                  />
+                )}
               </div>
             ) : null}
           </>

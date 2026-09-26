@@ -1,5 +1,12 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
+
+export const metadata: Metadata = {
+  title: "About — Lukas Fleury",
+  description:
+    "Waterloo Mechanical Engineering student — shop-first approach to CAD, currently on co-op as an Operations Engineer at LiftWerx.",
+};
 
 const stack = [
   { k: "CAD", v: "SolidWorks (CSWA) · AutoCAD · Inventor" },
@@ -11,7 +18,7 @@ const stack = [
 const facts = [
   { k: "Based", v: "Cambridge, ON" },
   { k: "School", v: "University of Waterloo · Mechanical Engineering" },
-  { k: "Now", v: "Incoming Ops Eng Co-op · LiftWerx" },
+  { k: "Now", v: "Ops Eng Co-op · LiftWerx (current)" },
   { k: "Next", v: "Available for Summer 2027 co-op" },
 ];
 
@@ -19,7 +26,7 @@ const timeline = [
   {
     year: "Fall 2026",
     title: "LiftWerx — Operations Engineer Co-op",
-    body: "Sustainable repair and maintenance solutions for wind turbines — extending the life of renewable-energy infrastructure.",
+    body: "Own lift-plan production for 6 field crews across North America — procedures, crane loads, rigging dimensions, and site layouts for up-tower turbine work. Small design and drawing work between plans.",
   },
   {
     year: "Winter 2026",
@@ -90,10 +97,10 @@ export default function AboutPage() {
             engineering serves society. Working around nuclear infrastructure
             and developing operation drawings for field crews taught me the
             weight of precision and safety — a missed dimension shows up as a
-            delay on site, or worse. At LiftWerx, I&apos;m getting to see the
-            other side of that: how engineering can support sustainable energy
-            through wind turbine repair and solutions that extend the life of
-            renewable infrastructure.
+            delay on site, or worse. At LiftWerx, I&apos;m writing lift plans
+            for the crews doing up-tower turbine work — gearbox, bearing, hub,
+            and blade exchanges — the documents that let those repairs happen
+            safely, on time, and keep clean-energy infrastructure running.
           </p>
           <p className="fade-up-2">
             My favourite work sits at the seam between CAD and the shop floor.
@@ -103,32 +110,6 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
-
-      <section className="mt-20 grid gap-8 border-t border-white/5 pt-10 md:grid-cols-[280px_1fr] md:gap-12">
-        <div className="relative aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-xl border border-white/8 bg-white/[0.02]">
-          <Image
-            src="/images/machining-tapping.jpg"
-            alt="Hand-tapping threads into a machined aluminum part held in a bench vise"
-            fill
-            sizes="(min-width: 768px) 280px, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div>
-          <h2 className="title text-xl md:text-2xl">In the shop</h2>
-          <p className="mt-4 max-w-xl text-ink-muted">
-            Manual machining is where I started — mill, lathe, hand-tapping,
-            deburring. It&apos;s also what I keep coming back to. Making the
-            part myself is how I make sure the drawing actually works, and how
-            I stay honest about tolerances I&apos;d otherwise dismiss on paper.
-          </p>
-          <p className="mt-4 max-w-xl text-ink-muted">
-            The SkillsOntario provincial competition sharpened that instinct
-            under a stopwatch: aluminum and steel parts, tight tolerances, and
-            no room for a second setup.
-          </p>
-        </div>
-      </section>
 
       <section className="mt-20 grid gap-10 border-t border-white/5 pt-10 md:grid-cols-2">
         <Col title="Quick facts" rows={facts} />
