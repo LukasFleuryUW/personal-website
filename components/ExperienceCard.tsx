@@ -1,11 +1,14 @@
 import Image from "next/image";
 
+import { Volume2 } from "lucide-react";
+
 export type MediaImage = { type?: "image"; src: string; alt: string };
 export type MediaVideo = {
   type: "video";
   src: string;
   poster?: string;
   alt: string;
+  hasSound?: boolean;
 };
 export type Media = MediaImage | MediaVideo;
 
@@ -17,8 +20,14 @@ export type Experience = {
   bullets: string[];
   tags?: string[];
   image?: { src: string; alt: string };
-  video?: { src: string; poster?: string; alt: string };
+  video?: {
+    src: string;
+    poster?: string;
+    alt: string;
+    hasSound?: boolean;
+  };
   imageLayout?: "side" | "wide";
+  mediaAspect?: string; // Tailwind aspect class for the side-by-side media strip
 };
 
 function MediaTile({
@@ -40,13 +49,17 @@ function MediaTile({
           className="h-full w-full object-cover"
           src={media.src}
           poster={media.poster}
-          autoPlay
-          muted
-          loop
+          controls
           playsInline
           preload="metadata"
           aria-label={media.alt}
         />
+        {media.hasSound ? (
+          <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-black/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent backdrop-blur-sm">
+            <Volume2 className="h-3 w-3" />
+            sound on
+          </span>
+        ) : null}
       </div>
     );
   }
@@ -85,8 +98,11 @@ export default function ExperienceCard({
         src: data.video.src,
         poster: data.video.poster,
         alt: data.video.alt,
+        hasSound: data.video.hasSound,
       }
     : null;
+
+  const stripAspect = data.mediaAspect ?? "aspect-[4/5]";
 
   return (
     <article className="grid gap-6 border-t border-white/5 py-10 md:grid-cols-[140px_1fr] md:gap-12">
@@ -119,14 +135,14 @@ export default function ExperienceCard({
               {imageMedia ? (
                 <MediaTile
                   media={imageMedia}
-                  aspect="aspect-[4/5]"
+                  aspect={stripAspect}
                   sizes="(min-width: 768px) 400px, 100vw"
                 />
               ) : null}
               {videoMedia ? (
                 <MediaTile
                   media={videoMedia}
-                  aspect="aspect-[4/5]"
+                  aspect={stripAspect}
                   sizes="(min-width: 768px) 400px, 100vw"
                 />
               ) : null}

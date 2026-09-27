@@ -30,7 +30,9 @@ const projects: Experience[] = [
       src: "/images/drone-video.mp4",
       poster: "/images/drone-video-poster.jpg",
       alt: "FPV drone flight footage",
+      hasSound: true,
     },
+    mediaAspect: "aspect-[9/16]",
   },
   {
     role: "Valvetronic Dual-Exit Exhaust",
