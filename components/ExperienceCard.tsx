@@ -1,6 +1,5 @@
 import Image from "next/image";
-
-import { Volume2 } from "lucide-react";
+import VideoBlock from "./VideoBlock";
 
 export type MediaImage = { type?: "image"; src: string; alt: string };
 export type MediaVideo = {
@@ -45,21 +44,13 @@ function MediaTile({
   if (media.type === "video") {
     return (
       <div className={cls}>
-        <video
-          className="h-full w-full object-cover"
+        <VideoBlock
           src={media.src}
           poster={media.poster}
-          controls
-          playsInline
-          preload="metadata"
-          aria-label={media.alt}
+          alt={media.alt}
+          hasSound={media.hasSound}
+          fit="cover"
         />
-        {media.hasSound ? (
-          <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-black/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-accent backdrop-blur-sm">
-            <Volume2 className="h-3 w-3" />
-            sound on
-          </span>
-        ) : null}
       </div>
     );
   }
@@ -131,19 +122,19 @@ export default function ExperienceCard({
                 </li>
               ))}
             </ul>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:max-w-[85%]">
               {imageMedia ? (
                 <MediaTile
                   media={imageMedia}
                   aspect={stripAspect}
-                  sizes="(min-width: 768px) 400px, 100vw"
+                  sizes="(min-width: 768px) 340px, 100vw"
                 />
               ) : null}
               {videoMedia ? (
                 <MediaTile
                   media={videoMedia}
                   aspect={stripAspect}
-                  sizes="(min-width: 768px) 400px, 100vw"
+                  sizes="(min-width: 768px) 340px, 100vw"
                 />
               ) : null}
             </div>
@@ -180,16 +171,12 @@ export default function ExperienceCard({
             {(imageMedia || videoMedia) ? (
               <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02]">
                 {(videoMedia ?? imageMedia)!.type === "video" ? (
-                  <video
-                    className="h-full w-full object-contain"
+                  <VideoBlock
                     src={videoMedia!.src}
                     poster={videoMedia!.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label={videoMedia!.alt}
+                    alt={videoMedia!.alt}
+                    hasSound={videoMedia!.hasSound}
+                    fit="contain"
                   />
                 ) : (
                   <Image
