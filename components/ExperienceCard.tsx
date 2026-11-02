@@ -114,7 +114,7 @@ export default function ExperienceCard({
         {hasBoth ? (
           /* Bullets on top, then a 2-column media strip (photo + video) below */
           <>
-            <ul className="mt-6 space-y-2 text-ink-muted">
+            <ul className="mt-6 space-y-2 text-ink-muted text-haze">
               {data.bullets.map((b, i) => (
                 <li key={i} className="flex gap-3 leading-relaxed">
                   <span className="mt-2.5 h-px w-4 shrink-0 bg-white/20" />
@@ -149,7 +149,7 @@ export default function ExperienceCard({
               />
             ) : null}
 
-            <ul className="space-y-2 text-ink-muted">
+            <ul className="space-y-2 text-ink-muted text-haze">
               {data.bullets.map((b, i) => (
                 <li key={i} className="flex gap-3 leading-relaxed">
                   <span className="mt-2.5 h-px w-4 shrink-0 bg-white/20" />
@@ -160,7 +160,7 @@ export default function ExperienceCard({
           </div>
         ) : (
           <>
-            <ul className="mt-6 space-y-2 text-ink-muted">
+            <ul className="mt-6 space-y-2 text-ink-muted text-haze">
               {data.bullets.map((b, i) => (
                 <li key={i} className="flex gap-3 leading-relaxed">
                   <span className="mt-2.5 h-px w-4 shrink-0 bg-white/20" />

@@ -3,7 +3,7 @@ import PageHeader from "@/components/PageHeader";
 import ExperienceCard, { Experience } from "@/components/ExperienceCard";
 
 export const metadata: Metadata = {
-  title: "Work — Lukas Fleury",
+  title: "Work | Lukas Fleury",
   description:
     "Engineering co-op experience: current Operations Engineer at LiftWerx (wind turbine repair), and Mammoet heavy-lift drawings for Bruce Power and Pickering Nuclear.",
 };
@@ -15,10 +15,9 @@ const roles: Experience[] = [
     place: "Cambridge, ON",
     period: "Aug–Dec 2026 · current",
     bullets: [
-      "Own lift-plan production for 6 field crews across North America — procedures, crane load charts, rigging dimensions, and site layout, each approved in time for the crew's start date.",
-      "Plan replacements for major nacelle components — gearboxes, main and pitch bearings, hub sections, and full blade swaps — anything inside the nacelle that can be exchanged up-tower.",
-      "Between plans, take on design and drawing work. Currently designing and modelling a swamp-mat rack for the rear of a transport trailer — sized to stay firmly seated under heavy braking loads.",
-      "Handle engineering change notices (ECNs) and equipment documentation, building fluency with product data management (PDM) workflows across the engineering document lifecycle.",
+      "Model and draft lift plans in SolidWorks for 12 field crews running up-tower turbine repairs across North America. Crane position, rigging arrangement, and load path all built out as assemblies, sized to the component being swapped and the clearances on that specific tower.",
+      "Designed a yaw drive extractor that pulls failed yaw drives out of the nacelle. Hydraulic jacks brace against the bed plate to break the M20 bolts loose, which is the only way to get them out in a space that tight.",
+      "Design work on accessory lifting rigs and crane equipment that let crews swap major turbine components without a full crane teardown. Smaller setup, faster turnaround, less time the turbine spends offline.",
     ],
     tags: ["Wind Energy", "Lift Planning", "Design", "PDM"],
     image: {
@@ -32,12 +31,11 @@ const roles: Experience[] = [
     place: "Puslinch, ON",
     period: "Jan–May 2026",
     bullets: [
-      "Produced 80+ fabrication and assembly drawings for cranes and heavy-lift rigging in AutoCAD and AutoCRANE, improving drawing accuracy and database standardization across the team.",
-      "Designed detailed usage, assembly, and setup drawings for heavy-lift transport systems including jack-and-slide and SPMT interfaces, reducing field complexity and supporting safer, faster on-site execution.",
-      "Developed the project drawing package for a 150-ton transformer install at Bruce Power and 100-ton steam generators at Pickering Nuclear — supporting critical nuclear infrastructure upgrades.",
-      "Built Excel-based automation that converts crane load configuration data into standardized, engineer-readable documents, improving that workflow by roughly 90%.",
+      "Drew up 80+ fabrication and assembly drawings for cranes and heavy-lift rigging. A lot of the work was pulling the drawing database into a cleaner, standardized state so field teams weren't working off inconsistent revisions.",
+      "Detailed setup, assembly, and usage drawings for heavy-lift transport systems like jack-and-slide and SPMT interfaces. The gear that moves massive loads across the ground. Clearer drawings mean less field improvisation and safer, faster installs.",
+      "Developed the drawing package for a 150-ton transformer install at Bruce Power and 100-ton steam generators at Pickering Nuclear. The drawings those crews worked off through the install.",
     ],
-    tags: ["AutoCAD", "AutoCRANE", "Heavy Lift", "Nuclear"],
+    tags: ["AutoCAD", "Operations", "Heavy Lift", "Nuclear"],
     image: {
       src: "/images/mammoet-crane.jpg",
       alt: "Mammoet crawler crane lifting a component onto a nuclear generating station",
@@ -51,14 +49,14 @@ const earlyJobs = [
     org: "The Welmar Group",
     place: "Guelph, ON",
     period: "Summers '23 + '24",
-    note: "Installed commercial HVAC duct systems from blueprints across job sites — first hands-on exposure to reading drawings and fitting parts under real field conditions.",
+    note: "Installed commercial HVAC duct systems from blueprints across job sites. First hands-on exposure to reading drawings and fitting parts under real field conditions.",
   },
   {
     role: "Line Cook",
     org: "Cambridge Mill · Pearle Hospitality",
     place: "Cambridge, ON",
     period: "2023 – 2025",
-    note: "Cooked on the line through high school — learned to work fast, run a station cleanly, and hold a standard when the pass is stacked.",
+    note: "Cooked on the line through high school. Learned to work fast, run a station cleanly, and hold a standard when the pass is stacked.",
   },
 ];
 
@@ -96,7 +94,7 @@ export default function WorkPage() {
                   <span className="text-ink-subtle">·</span>{" "}
                   <span className="text-ink-muted">{j.org}</span>
                 </div>
-                <p className="mt-1 max-w-2xl text-xs leading-relaxed text-ink-muted">
+                <p className="mt-1 max-w-2xl text-xs leading-relaxed text-ink-muted text-haze">
                   {j.note}
                 </p>
               </div>

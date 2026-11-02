@@ -17,7 +17,6 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [resumeMsg, setResumeMsg] = useState(false);
 
   // Close the mobile menu when the route changes
   useEffect(() => {
@@ -32,13 +31,6 @@ export default function Nav() {
     };
   }, [open]);
 
-  // Auto-dismiss the "resume being updated" note
-  useEffect(() => {
-    if (!resumeMsg) return;
-    const t = window.setTimeout(() => setResumeMsg(false), 3200);
-    return () => window.clearTimeout(t);
-  }, [resumeMsg]);
-
   return (
     <>
       <header className="sticky top-0 z-40 backdrop-blur-md">
@@ -46,7 +38,7 @@ export default function Nav() {
           <Link
             href="/"
             className="group inline-flex items-baseline gap-2 font-mono text-sm tracking-tight"
-            aria-label="Lukas Fleury — Home"
+            aria-label="Lukas Fleury, Home"
           >
             <span className="text-ink">lukas fleury</span>
             <span className="hidden text-ink-subtle transition group-hover:text-accent sm:inline">
@@ -82,33 +74,15 @@ export default function Nav() {
               })}
             </nav>
 
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setResumeMsg((v) => !v)}
-                aria-expanded={resumeMsg}
-                className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm text-accent transition hover:border-accent/70 hover:bg-accent/15"
-              >
-                <FileText className="h-3.5 w-3.5" />
-                Resume
-              </button>
-              {resumeMsg ? (
-                <div
-                  role="status"
-                  className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-white/10 bg-[#1c1c20] p-3 text-xs text-ink-muted shadow-lg"
-                >
-                  <span className="text-ink">Resume currently being updated.</span>{" "}
-                  Check back soon — or reach me directly at{" "}
-                  <a
-                    className="text-accent underline underline-offset-2"
-                    href="mailto:lfleury@uwaterloo.ca"
-                  >
-                    lfleury@uwaterloo.ca
-                  </a>
-                  .
-                </div>
-              ) : null}
-            </div>
+            <a
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm text-accent transition hover:border-accent/70 hover:bg-accent/15"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              Resume
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -167,9 +141,10 @@ export default function Nav() {
                 );
               })}
 
-              <button
-                type="button"
-                onClick={() => setResumeMsg((v) => !v)}
+              <a
+                href="/Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
                 className="fade-up mt-4 inline-flex items-center justify-between rounded-2xl border border-accent/40 bg-accent/10 px-5 py-4 text-lg text-accent transition hover:border-accent/70 hover:bg-accent/15"
                 style={{ animationDelay: `${links.length * 40}ms` }}
               >
@@ -180,24 +155,7 @@ export default function Nav() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent/70">
                   pdf
                 </span>
-              </button>
-
-              {resumeMsg ? (
-                <div
-                  role="status"
-                  className="mt-3 rounded-xl border border-white/10 bg-[#1c1c20] p-4 text-sm text-ink-muted"
-                >
-                  <span className="text-ink">Resume currently being updated.</span>{" "}
-                  Check back soon — or reach me directly at{" "}
-                  <a
-                    className="text-accent underline underline-offset-2"
-                    href="mailto:lfleury@uwaterloo.ca"
-                  >
-                    lfleury@uwaterloo.ca
-                  </a>
-                  .
-                </div>
-              ) : null}
+              </a>
             </nav>
           </div>
         </div>

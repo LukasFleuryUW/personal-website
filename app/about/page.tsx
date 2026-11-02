@@ -3,16 +3,17 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "About — Lukas Fleury",
+  title: "About | Lukas Fleury",
   description:
-    "Waterloo Mechanical Engineering student — shop-first approach to CAD, currently on co-op as an Operations Engineer at LiftWerx.",
+    "Waterloo Mechanical Engineering student with a shop-first approach to CAD, currently on co-op as an Operations Engineer at LiftWerx.",
 };
 
 const stack = [
-  { k: "CAD", v: "SolidWorks (CSWA) · AutoCAD · Inventor" },
-  { k: "CAM", v: "Mastercam · AutoCRANE" },
-  { k: "Shop", v: "Mill · Lathe · CNC · MIG/TIG · 3D Print" },
-  { k: "Code", v: "MATLAB · C++ · Excel VBA · SAP" },
+  { k: "CAD", v: "SolidWorks (CSWP) · AutoCAD · Inventor" },
+  { k: "CAM", v: "Mastercam" },
+  { k: "Shop", v: "Mill · Lathe · CNC · MIG/TIG · 3D Print · Soldering" },
+  { k: "Code", v: "C++ · MATLAB · Excel VBA · SAP" },
+  { k: "Control", v: "Arduino · ROS 2 · Betaflight · ArduPilot" },
 ];
 
 const facts = [
@@ -25,12 +26,12 @@ const facts = [
 const timeline = [
   {
     year: "Fall 2026",
-    title: "LiftWerx — Operations Engineer Co-op",
-    body: "Own lift-plan production for 6 field crews across North America — procedures, crane loads, rigging dimensions, and site layouts for up-tower turbine work. Small design and drawing work between plans.",
+    title: "LiftWerx · Operations Engineer Co-op",
+    body: "Own lift-plan production for 6 field crews across North America: procedures, crane loads, rigging dimensions, and site layouts for up-tower turbine work. Small design and drawing work between plans.",
   },
   {
     year: "Winter 2026",
-    title: "Mammoet — Engineering Co-op",
+    title: "Mammoet · Engineering Co-op",
     body: "Fabrication drawings for cranes, jack-and-slide, and SPMT rigging supporting nuclear and utility installs.",
   },
   {
@@ -45,12 +46,12 @@ const timeline = [
   },
   {
     year: "'23–'24",
-    title: "The Welmar Group — Sheet Metal",
+    title: "The Welmar Group · Sheet Metal",
     body: "Two summers installing commercial HVAC on live job sites across southern Ontario.",
   },
   {
     year: "'23–'25",
-    title: "Cambridge Mill — Line Cook",
+    title: "Cambridge Mill · Line Cook",
     body: "Cooked on the line at Pearle Hospitality's Cambridge Mill through high school. First place I learned to work fast and hold a standard under pressure.",
   },
 ];
@@ -61,7 +62,7 @@ export default function AboutPage() {
       <PageHeader
         section="§01"
         eyebrow="about"
-        title="Blueprints, then parts."
+        title="Shop first, then CAD."
       />
 
       <div className="mt-10 grid gap-10 md:grid-cols-[240px_1fr] md:gap-14">
@@ -78,12 +79,13 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-ink-muted">
+        <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-ink-muted text-haze">
           <p className="fade-up-2">
-            I started in the shop — two summers in sheet metal, competitions on
-            the mill — before I ever put a fillet in a CAD model. Those early
-            experiences taught me the importance of service, responsibility,
-            and setting a positive example for the people working around me.
+            I started in the shop. Two summers in sheet metal and
+            competitions on the mill before I ever put a fillet in a CAD
+            model. Those early experiences taught me the importance of
+            service, responsibility, and setting a positive example for the
+            people working around me.
           </p>
           <p className="fade-up-2">
             I&apos;ve carried those principles into engineering. Through
@@ -96,11 +98,12 @@ export default function AboutPage() {
             <span className="text-ink">LiftWerx</span> have shown me how
             engineering serves society. Working around nuclear infrastructure
             and developing operation drawings for field crews taught me the
-            weight of precision and safety — a missed dimension shows up as a
-            delay on site, or worse. At LiftWerx, I&apos;m writing lift plans
-            for the crews doing up-tower turbine work — gearbox, bearing, hub,
-            and blade exchanges — the documents that let those repairs happen
-            safely, on time, and keep clean-energy infrastructure running.
+            weight of precision and safety. A missed dimension shows up as a
+            delay on site, or worse. At LiftWerx, I&apos;m creating lift
+            plans for crews doing up-tower turbine work like gearbox,
+            bearing, hub, and blade exchanges. These are the drawings that
+            let those repairs happen safely, on time, and keep clean-energy
+            infrastructure running.
           </p>
           <p className="fade-up-2">
             My favourite work sits at the seam between CAD and the shop floor.
@@ -129,7 +132,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <div className="text-ink">{t.title}</div>
-                <p className="mt-1 text-sm leading-relaxed text-ink-muted">
+                <p className="mt-1 text-sm leading-relaxed text-ink-muted text-haze">
                   {t.body}
                 </p>
               </div>
@@ -152,9 +155,9 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-            <figcaption className="max-w-xl text-ink-muted">
+            <figcaption className="max-w-xl text-ink-muted text-haze">
               <span className="text-ink">Wrenching on my own car.</span> Coilovers,
-              headlight swaps, exhaust work, regular maintenance — most of what
+              headlight swaps, exhaust work, regular maintenance. Most of what
               lives under the hood I&apos;ve had my hands on. It&apos;s where my
               interest in mechanical design started, and it&apos;s still the
               fastest way I know to test a CAD idea against the real world.
@@ -165,22 +168,22 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
               <Image
                 src="/images/welding.png"
-                alt="MIG welding — sparks flying, viewed through a welding helmet"
+                alt="MIG welding, sparks flying, viewed through a welding helmet"
                 fill
                 sizes="200px"
                 className="object-cover"
               />
             </div>
-            <figcaption className="max-w-xl text-ink-muted">
+            <figcaption className="max-w-xl text-ink-muted text-haze">
               <span className="text-ink">Behind the hood.</span> I love welding
-              for the same reason I love machining — it&apos;s the last step
+              for the same reason I love machining. It&apos;s the last step
               between a drawing and a part that&apos;s actually in the world.
               MIG, TIG, and a lot of learning the hard way on scrap.
             </figcaption>
           </figure>
         </div>
 
-        <p className="mt-10 max-w-2xl text-ink-muted">
+        <p className="mt-10 max-w-2xl text-ink-muted text-haze">
           Outside of that: teaching people how to run a mill, and finding
           excuses to make the part myself instead of buying it. If you&apos;re
           into any of the same, say hi.

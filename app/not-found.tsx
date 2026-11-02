@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Home } from "lucide-react";
 
 export const metadata = {
-  title: "Page not found — Lukas Fleury",
+  title: "Page not found | Lukas Fleury",
 };
 
 const suggestions = [

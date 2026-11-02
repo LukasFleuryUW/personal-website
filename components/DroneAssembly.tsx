@@ -30,86 +30,107 @@ type Part = {
 const parts: Part[] = [
   {
     id: "airframe",
-    from: { x: 0, y: 320, r: -30 },
+    from: { x: 0, y: 220, r: -20 },
     to: { x: 0, y: 0, r: 0 },
     in: 0.0,
-    out: 0.2,
+    out: 0.08,
   },
   {
     id: "motor-fl",
-    from: { x: -340, y: -260, r: -40 },
+    from: { x: -240, y: -180, r: -25 },
     to: { x: -110, y: -110, r: 0 },
-    in: 0.18,
-    out: 0.34,
+    in: 0.1,
+    out: 0.18,
   },
   {
     id: "motor-fr",
-    from: { x: 340, y: -260, r: 40 },
+    from: { x: 240, y: -180, r: 25 },
     to: { x: 110, y: -110, r: 0 },
-    in: 0.18,
-    out: 0.34,
+    in: 0.14,
+    out: 0.22,
   },
   {
     id: "motor-rl",
-    from: { x: -340, y: 260, r: 40 },
+    from: { x: -240, y: 180, r: 25 },
     to: { x: -110, y: 110, r: 0 },
     in: 0.18,
-    out: 0.34,
+    out: 0.26,
   },
   {
     id: "motor-rr",
-    from: { x: 340, y: 260, r: -40 },
+    from: { x: 240, y: 180, r: -25 },
     to: { x: 110, y: 110, r: 0 },
-    in: 0.18,
-    out: 0.34,
+    in: 0.22,
+    out: 0.3,
   },
   {
     id: "fc-adapter",
-    from: { x: 0, y: -340, r: 180 },
+    from: { x: 0, y: -220, r: 90 },
     to: { x: 0, y: 0, r: 0 },
-    in: 0.36,
-    out: 0.5,
+    in: 0.32,
+    out: 0.4,
   },
   {
     id: "fc",
-    from: { x: 0, y: -320, r: 225 },
-    to: { x: 0, y: 0, r: 45 }, // 45° offset from frame
-    in: 0.5,
-    out: 0.62,
+    from: { x: 0, y: -200, r: 0 },
+    to: { x: 0, y: 0, r: 0 }, // drops straight down, no rotation at any point
+    in: 0.42,
+    out: 0.5,
   },
   {
     id: "battery",
-    from: { x: 380, y: 60, r: 90 },
+    from: { x: 260, y: 40, r: 60 },
     to: { x: 0, y: 0, r: 0 },
+    in: 0.52,
+    out: 0.6,
+  },
+  {
+    id: "fpv-cam",
+    from: { x: -260, y: -30, r: -60 },
+    to: { x: -92, y: 0, r: 0 },
     in: 0.62,
-    out: 0.74,
+    out: 0.7,
+  },
+  {
+    id: "gps",
+    from: { x: -55, y: -260, r: 0 },
+    to: { x: -55, y: 0, r: 0 }, // sits on the left side of the plate
+    in: 0.7,
+    out: 0.76,
+  },
+  {
+    id: "telemetry",
+    from: { x: 260, y: 40, r: 0 },
+    to: { x: 55, y: 0, r: 0 }, // sits on the right side of the plate
+    in: 0.74,
+    out: 0.8,
   },
   {
     id: "prop-fl",
-    from: { x: -280, y: -320, r: 120 },
+    from: { x: -200, y: -220, r: 80 },
     to: { x: -110, y: -110, r: 0 },
-    in: 0.78,
-    out: 0.96,
+    in: 0.82,
+    out: 0.9,
   },
   {
     id: "prop-fr",
-    from: { x: 280, y: -320, r: -120 },
+    from: { x: 200, y: -220, r: -80 },
     to: { x: 110, y: -110, r: 60 },
-    in: 0.78,
-    out: 0.96,
+    in: 0.84,
+    out: 0.92,
   },
   {
     id: "prop-rl",
-    from: { x: -280, y: 320, r: 120 },
+    from: { x: -200, y: 220, r: 80 },
     to: { x: -110, y: 110, r: 60 },
-    in: 0.78,
-    out: 0.96,
+    in: 0.86,
+    out: 0.94,
   },
   {
     id: "prop-rr",
-    from: { x: 280, y: 320, r: -120 },
+    from: { x: 200, y: 220, r: -80 },
     to: { x: 110, y: 110, r: 0 },
-    in: 0.78,
+    in: 0.88,
     out: 0.96,
   },
 ];
@@ -119,37 +140,47 @@ const callouts = [
   {
     at: 0.0,
     title: "Airframe",
-    body: "Started from a 5\" X-frame in CAD — arms and center plate as one unit. Every frame component 3D-printed myself, iterating on fit and stiffness until it held under flight loads.",
+    body: "Started from an 8\" X-frame in SolidWorks, with arms and center plate as one unit. Every frame component 3D-printed myself, iterating on fit and stiffness until it held under flight loads.",
   },
   {
-    at: 0.18,
+    at: 0.14,
     title: "Motors",
-    body: "Four RS2205 brushless motors at the arm ends. 2300kv, matched to the 3S pack.",
+    body: "Four RS2205 brushless motors at the arm ends, matched to the 3S pack and sized for the 8-inch prop load.",
   },
   {
-    at: 0.36,
+    at: 0.28,
     title: "Custom FC adapter",
-    body: "The SpeedyBee F405 AIO doesn't line up with the frame's stock hole pattern — designed and 3D-printed a custom adapter to bridge them.",
+    body: "The SpeedyBee F405 AIO doesn't line up with the frame's stock hole pattern, so I designed and 3D-printed a custom adapter to bridge them.",
+  },
+  {
+    at: 0.38,
+    title: "Flight controller",
+    body: "SpeedyBee F405 AIO with integrated ESCs and power distribution. Started on Betaflight for tuning, then flashed to ArduPilot once hover was dialed in to open up waypoint navigation. Every joint soldered by hand.",
   },
   {
     at: 0.5,
-    title: "Flight controller",
-    body: "SpeedyBee F405 AIO — integrated ESCs and power distribution. Mounted at a 45° offset from the frame so the pin headers clear the arm hardware. Soldered every joint myself.",
-  },
-  {
-    at: 0.62,
     title: "Battery",
     body: "3S 2200 mAh LiPo mounted top-side, strapped down.",
   },
   {
-    at: 0.78,
-    title: "Propellers",
-    body: "Three-blade 5-inch props with a custom-designed geometry, modelled in SolidWorks.",
+    at: 0.58,
+    title: "FPV camera",
+    body: "Analog FPV cam up front for the live feed. The pilot-view half of the build before autonomy took over.",
   },
   {
-    at: 0.92,
+    at: 0.66,
+    title: "GPS + radio telemetry",
+    body: "GPS puck on a stand-off above the stack, telemetry radio alongside. This is what lets the drone know where it is and what waypoint comes next, then report heading, altitude, and battery back to the ground.",
+  },
+  {
+    at: 0.8,
+    title: "Propellers",
+    body: "Three-blade 8-inch props with a custom-designed geometry, modelled in SolidWorks and sized to the motor's torque curve.",
+  },
+  {
+    at: 0.95,
     title: "Crashed it. Tuned it. Flew it.",
-    body: "Early flights ended in the grass more than the sky. Each crash sent me back to Betaflight, the printer, or the soldering iron — those iterations are what took the airframe from wobble to stable hover and controlled flight.",
+    body: "Early flights ended in the grass more than the sky. Each crash sent me back to Betaflight, the printer, or the soldering iron. Those iterations are what took it from wobble to stable hover, then to autonomous waypoint runs on ArduPilot.",
   },
 ];
 
@@ -284,8 +315,53 @@ function Battery() {
   return (
     <g>
       <rect x={-40} y={-18} width={80} height={36} rx={5} fill="rgba(20,20,22,0.9)" stroke={white} strokeWidth={1.5} />
-      <rect x={-32} y={-11} width={22} height={22} rx={2} fill="none" stroke={accentDim} strokeWidth={1.2} />
-      <text x={12} y={5} fill={white} fontSize={9} fontFamily="monospace">3S · 2200</text>
+      <text
+        x={0}
+        y={4}
+        textAnchor="middle"
+        fill={white}
+        fontSize={9}
+        fontFamily="monospace"
+        letterSpacing="1"
+      >
+        3S · 2200
+      </text>
+    </g>
+  );
+}
+
+function FPVCamera() {
+  // Small front-facing analog FPV cam: lens cylinder with a mount
+  return (
+    <g>
+      <rect x={-10} y={-11} width={20} height={22} rx={3} fill="rgba(20,20,22,0.9)" stroke={white} strokeWidth={1.4} />
+      <circle cx={0} cy={0} r={6.5} fill="rgba(0,0,0,0.9)" stroke={accent} strokeWidth={1.3} />
+      <circle cx={0} cy={0} r={2.4} fill={accent} />
+      <text x={0} y={18} textAnchor="middle" fill={accent} fontSize={6.5} fontFamily="monospace" letterSpacing="1">FPV</text>
+    </g>
+  );
+}
+
+function GPS() {
+  // GPS puck: disc with a hint of patch antenna
+  return (
+    <g>
+      <circle r={14} fill="rgba(20,20,22,0.9)" stroke={white} strokeWidth={1.4} />
+      <rect x={-7} y={-7} width={14} height={14} rx={1.5} fill="rgba(217,119,87,0.15)" stroke={accent} strokeWidth={1} />
+      <circle r={2} fill={accent} />
+      <text x={0} y={24} textAnchor="middle" fill={accent} fontSize={6.5} fontFamily="monospace" letterSpacing="1">GPS</text>
+    </g>
+  );
+}
+
+function TelemetryRadio() {
+  // Small telemetry module with a stub antenna
+  return (
+    <g>
+      <rect x={-10} y={-7} width={20} height={14} rx={2} fill="rgba(20,20,22,0.9)" stroke={white} strokeWidth={1.3} />
+      <line x1={0} y1={-7} x2={0} y2={-22} stroke={accent} strokeWidth={1.4} />
+      <circle cx={0} cy={-22} r={1.6} fill={accent} />
+      <text x={0} y={18} textAnchor="middle" fill={accent} fontSize={6.5} fontFamily="monospace" letterSpacing="1">RF</text>
     </g>
   );
 }
@@ -295,6 +371,9 @@ function renderPart(id: string) {
   if (id === "fc-adapter") return <FCAdapter />;
   if (id === "fc") return <FlightController />;
   if (id === "battery") return <Battery />;
+  if (id === "fpv-cam") return <FPVCamera />;
+  if (id === "gps") return <GPS />;
+  if (id === "telemetry") return <TelemetryRadio />;
   if (id.startsWith("motor")) return <Motor />;
   if (id.startsWith("prop")) return <ThreeBladeProp />;
   return null;
@@ -346,9 +425,9 @@ export default function DroneAssembly() {
     <section
       ref={scrollerRef}
       aria-label="Drone assembly walkthrough"
-      /* 200vh = 1 screen of animation. Snappier scroll pace. */
-      className="relative hidden md:block"
-      style={{ height: "200vh" }}
+      /* Shorter scroll range — snappier pace, less time stuck in the loop. */
+      className="relative -mt-24 hidden md:block"
+      style={{ height: "180vh" }}
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-[1fr_1fr] items-center gap-8 px-6">
@@ -414,7 +493,7 @@ export default function DroneAssembly() {
               <div className="fade-up font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 {active.title}
               </div>
-              <p className="fade-up-1 mt-3 max-w-md text-lg leading-relaxed text-ink-muted">
+              <p className="fade-up-1 mt-3 max-w-md text-lg leading-relaxed text-ink-muted text-haze">
                 {active.body}
               </p>
             </div>

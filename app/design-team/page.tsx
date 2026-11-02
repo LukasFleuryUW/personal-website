@@ -4,9 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Design Team — Lukas Fleury",
+  title: "Design Team | Lukas Fleury",
   description:
-    "WATFlight — University of Waterloo student design team building autonomous, sustainable aircraft. Member of the Mechanical team.",
+    "WATFlight. University of Waterloo student design team building autonomous, sustainable aircraft. Member of the Mechanical team.",
 };
 
 const work = [
@@ -20,7 +20,7 @@ const work = [
   },
   {
     title: "Fabrication",
-    body: "Turning CAD into a real airframe — layup, machining, and assembly of flight-ready parts.",
+    body: "Turning CAD into a real airframe: layup, machining, and assembly of flight-ready parts.",
   },
 ];
 
@@ -53,9 +53,9 @@ export default function DesignTeamPage() {
         </div>
       </div>
 
-      <p className="fade-up-2 mt-10 max-w-2xl text-xl leading-relaxed text-ink-muted">
+      <p className="fade-up-2 mt-10 max-w-2xl text-xl leading-relaxed text-ink-muted text-haze">
         A University of Waterloo student design team building the future of
-        flight — cleaner, more efficient aircraft that prove autonomy and
+        flight. Cleaner, more efficient aircraft that prove autonomy and
         sustainability can share the same airframe. I&apos;m on the
         Mechanical team.
       </p>
@@ -81,7 +81,7 @@ export default function DesignTeamPage() {
             airframe · aero · fab
           </span>
         </div>
-        <p className="mt-6 max-w-2xl text-ink-muted">
+        <p className="mt-6 max-w-2xl text-ink-muted text-haze">
           The Mechanical team turns an autonomous glider concept into a
           flight-ready aircraft. We develop the airframe, aerodynamic
           surfaces, and lightweight structures, then validate each design
@@ -95,7 +95,7 @@ export default function DesignTeamPage() {
               className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition hover:border-white/20 hover:bg-white/[0.05]"
             >
               <h3 className="title text-lg">{c.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted text-haze">
                 {c.body}
               </p>
             </div>

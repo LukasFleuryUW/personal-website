@@ -23,7 +23,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lukas Fleury — Mechanical Engineering",
+  title: "Lukas Fleury | Mechanical Engineering",
   description:
     "Mechanical Engineering student at the University of Waterloo. Heavy-lift drawings, machined parts, propulsion hardware.",
   metadataBase: new URL("https://lukasfleury.com"),

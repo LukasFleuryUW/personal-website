@@ -64,6 +64,14 @@ body {
 .text-balance { text-wrap: balance; }
 .hairline { border-color: rgba(255, 255, 255, 0.08); }
 
+/* Subtle legibility boost for body copy over the animated background.
+   Dark halo around each glyph, invisible as a shape but keeps text crisp. */
+.text-haze {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 0 10px rgba(0, 0, 0, 0.35);
+}
+
 /* Availability chip — pulsing dot + soft breathing glow */
 @keyframes dot-pulse {
   0%, 100% {
