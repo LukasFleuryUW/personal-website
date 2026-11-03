@@ -25,8 +25,31 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Lukas Fleury | Mechanical Engineering",
   description:
-    "Mechanical Engineering student at the University of Waterloo. Heavy-lift drawings, machined parts, propulsion hardware.",
+    "Mechanical Engineering student at the University of Waterloo. I design, build, and automate — robotic arms, drones, and whatever's on the bench next.",
   metadataBase: new URL("https://lukasfleury.com"),
+  openGraph: {
+    type: "website",
+    url: "https://lukasfleury.com",
+    title: "Lukas Fleury | Mechanical Engineering",
+    description:
+      "Mechanical Engineering student at the University of Waterloo. I design, build, and automate — robotic arms, drones, and whatever's on the bench next.",
+    siteName: "Lukas Fleury",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Lukas Fleury — Mechanical Engineering portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lukas Fleury | Mechanical Engineering",
+    description:
+      "I design, build, and automate — robotic arms, drones, and whatever's on the bench next.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

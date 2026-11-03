@@ -75,7 +75,7 @@ export default function Nav() {
             </nav>
 
             <a
-              href="/Resume.pdf"
+              href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm text-accent transition hover:border-accent/70 hover:bg-accent/15"
@@ -142,7 +142,7 @@ export default function Nav() {
               })}
 
               <a
-                href="/Resume.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="fade-up mt-4 inline-flex items-center justify-between rounded-2xl border border-accent/40 bg-accent/10 px-5 py-4 text-lg text-accent transition hover:border-accent/70 hover:bg-accent/15"

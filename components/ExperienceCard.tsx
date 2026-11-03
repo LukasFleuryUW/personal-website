@@ -1,13 +1,14 @@
 import Image from "next/image";
 import VideoBlock from "./VideoBlock";
 
-export type MediaImage = { type?: "image"; src: string; alt: string };
+export type MediaImage = { type?: "image"; src: string; alt: string; badge?: string };
 export type MediaVideo = {
   type: "video";
   src: string;
   poster?: string;
   alt: string;
   hasSound?: boolean;
+  badge?: string;
 };
 export type Media = MediaImage | MediaVideo;
 
@@ -18,16 +19,29 @@ export type Experience = {
   period: string;
   bullets: string[];
   tags?: string[];
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; badge?: string };
   video?: {
     src: string;
     poster?: string;
     alt: string;
     hasSound?: boolean;
+    badge?: string;
   };
   imageLayout?: "side" | "wide";
   mediaAspect?: string; // Tailwind aspect class for the side-by-side media strip
 };
+
+function MediaBadge({ label }: { label: string }) {
+  return (
+    <span className="pointer-events-none absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-accent/50 bg-black/55 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-accent backdrop-blur-sm">
+      <span
+        aria-hidden
+        className="inline-block h-1.5 w-1.5 rounded-full bg-accent"
+      />
+      {label}
+    </span>
+  );
+}
 
 function MediaTile({
   media,
@@ -40,10 +54,11 @@ function MediaTile({
   sizes: string;
   className?: string;
 }) {
-  const cls = `relative w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02] ${aspect} ${className ?? ""}`;
+  const cls = `relative w-full overflow-hidden rounded-xl border-2 border-accent/30 bg-white/[0.02] ${aspect} ${className ?? ""}`;
   if (media.type === "video") {
     return (
       <div className={cls}>
+        {media.badge ? <MediaBadge label={media.badge} /> : null}
         <VideoBlock
           src={media.src}
           poster={media.poster}
@@ -56,6 +71,7 @@ function MediaTile({
   }
   return (
     <div className={cls}>
+      {media.badge ? <MediaBadge label={media.badge} /> : null}
       <Image
         src={media.src}
         alt={media.alt}
@@ -81,7 +97,7 @@ export default function ExperienceCard({
   const hasBoth = hasImage && hasVideo;
 
   const imageMedia: Media | null = data.image
-    ? { type: "image", src: data.image.src, alt: data.image.alt }
+    ? { type: "image", src: data.image.src, alt: data.image.alt, badge: data.image.badge }
     : null;
   const videoMedia: Media | null = data.video
     ? {
@@ -90,6 +106,7 @@ export default function ExperienceCard({
         poster: data.video.poster,
         alt: data.video.alt,
         hasSound: data.video.hasSound,
+        badge: data.video.badge,
       }
     : null;
 
@@ -169,7 +186,7 @@ export default function ExperienceCard({
               ))}
             </ul>
             {(imageMedia || videoMedia) ? (
-              <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/8 bg-white/[0.02]">
+              <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl border-2 border-accent/30 bg-white/[0.02]">
                 {(videoMedia ?? imageMedia)!.type === "video" ? (
                   <VideoBlock
                     src={videoMedia!.src}

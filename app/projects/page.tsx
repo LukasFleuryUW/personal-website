@@ -46,13 +46,15 @@ const projects: Experience[] = [
     ],
     tags: ["SolidWorks", "ROS 2", "MoveIt", "Stepper Control", "Planetary Gearbox"],
     image: {
-      src: "/images/arm-ss.png",
-      alt: "SolidWorks CAD view of the 5-DOF robotic arm Neemah",
+      src: "/images/arm-ss-2.png",
+      alt: "SolidWorks CAD view of Neemah, in-progress build",
+      badge: "In Progress",
     },
     video: {
       src: "/images/arm-video.mp4",
       poster: "/images/arm-video-poster.jpg",
-      alt: "5-DOF robotic arm with 28:1 planetary gearboxes moving under stepper control",
+      alt: "Robotic arm moving under stepper control",
+      badge: "In Progress",
     },
     mediaAspect: "aspect-[4/5]",
   },
@@ -68,7 +70,7 @@ const projects: Experience[] = [
     ],
     tags: ["SolidWorks", "Planetary Gear", "FDM", "PLA", "Mechanical Design"],
     image: {
-      src: "/images/box-ss.png",
+      src: "/images/box-ss-2.png",
       alt: "SolidWorks CAD view of the custom 28:1 planetary gearbox",
     },
     video: {
