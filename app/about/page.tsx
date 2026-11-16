@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const stack = [
   { k: "CAD", v: "SolidWorks (CSWP) · AutoCAD · Inventor" },
   { k: "CAM", v: "Mastercam" },
-  { k: "Shop", v: "Mill · Lathe · CNC · MIG/TIG · 3D Print · Soldering" },
+  { k: "Shop", v: "Mill · Lathe · CNC · MIG · 3D Print · Soldering" },
   { k: "Code", v: "C++ · MATLAB · Excel VBA · SAP" },
   { k: "Control", v: "Arduino · ROS 2 · Betaflight · ArduPilot" },
 ];
@@ -81,35 +81,37 @@ export default function AboutPage() {
 
         <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-ink-muted text-haze">
           <p className="fade-up-2">
-            I started in the shop. Two summers in sheet metal and
-            competitions on the mill before I ever put a fillet in a CAD
-            model. Those early experiences taught me the importance of
-            service, responsibility, and setting a positive example for the
-            people working around me.
+            My interest in engineering started well before university. I spent
+            time working in sheet metal shops and competing in machining, which
+            gave me an appreciation for how things are actually made and the
+            people behind the work. Those experiences shaped how I approach
+            engineering today, with an emphasis on learning from others, taking
+            responsibility, and working as part of a team.
           </p>
           <p className="fade-up-2">
-            I&apos;ve carried those principles into engineering. Through
-            high-school and university design teams, I&apos;ve learned to work
-            collaboratively to solve difficult problems and turn ideas into
-            practical solutions.
+            Through high school and university design teams, I&apos;ve had the
+            opportunity to put that approach into practice. I&apos;ve worked
+            alongside others to tackle challenging problems, develop ideas, and
+            turn designs into something tangible.
           </p>
           <p className="fade-up-2">
-            My co-ops at <span className="text-ink">Mammoet</span> and{" "}
-            <span className="text-ink">LiftWerx</span> have shown me how
-            engineering serves society. Working around nuclear infrastructure
-            and developing operation drawings for field crews taught me the
-            weight of precision and safety. A missed dimension shows up as a
-            delay on site, or worse. At LiftWerx, I&apos;m creating lift
-            plans for crews doing up-tower turbine work like gearbox,
-            bearing, hub, and blade exchanges. These are the drawings that
-            let those repairs happen safely, on time, and keep clean-energy
-            infrastructure running.
+            My co-op experiences at <span className="text-ink">Mammoet</span>{" "}
+            and <span className="text-ink">LiftWerx</span> have given me a
+            better understanding of the role engineering plays in real-world
+            operations. At Mammoet, I worked around nuclear infrastructure,
+            contributing to equipment designs and engineering drawings used by
+            field personnel. At LiftWerx, I develop lift plans for crews
+            carrying out major wind turbine repairs, including gearbox,
+            bearing, hub, and blade exchanges. Both experiences have reinforced
+            how much precision, communication, and safety matter when
+            engineering decisions make their way into the field.
           </p>
           <p className="fade-up-2">
-            My favourite work sits at the seam between CAD and the shop floor.
-            Drawings that survive contact with a fabricator. Parts that come
-            off a mill inside spec on the first setup. Solutions that keep
-            real, physical systems running.
+            I enjoy the connection between engineering design and hands-on
+            work. Whether it&apos;s developing a CAD model, preparing a drawing
+            for fabrication, or working through a problem with someone on the
+            shop floor, I&apos;m most interested in seeing engineering translate
+            into something practical.
           </p>
         </div>
       </div>
@@ -144,50 +146,43 @@ export default function AboutPage() {
       <section className="mt-20 border-t border-white/5 pt-10">
         <h2 className="title text-xl md:text-2xl">Outside of engineering</h2>
 
-        <div className="mt-8 space-y-10">
-          <figure className="grid gap-6 md:grid-cols-[200px_1fr] md:items-center md:gap-8">
-            <div className="relative aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-[560px_1fr] lg:gap-12">
+          <div className="grid grid-cols-2 gap-4 lg:max-w-[560px]">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
               <Image
                 src="/images/car.png"
                 alt="My personal vehicle"
                 fill
-                sizes="200px"
+                sizes="(min-width: 1024px) 280px, 45vw"
                 className="object-cover"
               />
             </div>
-            <figcaption className="max-w-xl text-ink-muted text-haze">
-              <span className="text-ink">Wrenching on my own car.</span> Coilovers,
-              headlight swaps, exhaust work, regular maintenance. Most of what
-              lives under the hood I&apos;ve had my hands on. It&apos;s where my
-              interest in mechanical design started, and it&apos;s still the
-              fastest way I know to test a CAD idea against the real world.
-            </figcaption>
-          </figure>
-
-          <figure className="grid gap-6 md:grid-cols-[200px_1fr] md:items-center md:gap-8">
-            <div className="relative aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02]">
               <Image
                 src="/images/welding.png"
                 alt="MIG welding, sparks flying, viewed through a welding helmet"
                 fill
-                sizes="200px"
+                sizes="(min-width: 1024px) 280px, 45vw"
                 className="object-cover"
               />
             </div>
-            <figcaption className="max-w-xl text-ink-muted text-haze">
-              <span className="text-ink">Behind the hood.</span> I love welding
-              for the same reason I love machining. It&apos;s the last step
-              between a drawing and a part that&apos;s actually in the world.
-              MIG, TIG, and a lot of learning the hard way on scrap.
-            </figcaption>
-          </figure>
-        </div>
+          </div>
 
-        <p className="mt-10 max-w-2xl text-ink-muted text-haze">
-          Outside of that: teaching people how to run a mill, and finding
-          excuses to make the part myself instead of buying it. If you&apos;re
-          into any of the same, say hi.
-        </p>
+          <div className="max-w-xl space-y-6 text-lg leading-relaxed text-ink-muted text-haze">
+            <p>
+              Outside of engineering, I&apos;m usually still finding ways to
+              work with my hands. Whether it&apos;s working on my own car, from
+              coilovers and headlight swaps to exhaust work, or spending time
+              welding with MIG, I&apos;ve always enjoyed figuring out
+              how things work and making them better. I also enjoy teaching
+              others how to use a mill and tend to look for any excuse to make
+              something myself rather than buy it. There&apos;s something
+              especially satisfying about taking an idea from a drawing and
+              turning it into something real.
+            </p>
+            <p>If you&apos;re into any of the same things, feel free to say hi.</p>
+          </div>
+        </div>
       </section>
     </>
   );

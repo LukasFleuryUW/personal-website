@@ -422,12 +422,13 @@ export default function DroneAssembly() {
   const active = currentCallout(progress);
 
   return (
+    <>
     <section
       ref={scrollerRef}
       aria-label="Drone assembly walkthrough"
       /* Shorter scroll range — snappier pace, less time stuck in the loop. */
-      className="relative -mt-24 hidden md:block"
-      style={{ height: "180vh" }}
+      className="relative -mt-48 -mb-48 hidden md:block"
+      style={{ height: "150vh" }}
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-[1fr_1fr] items-center gap-8 px-6">
@@ -500,6 +501,39 @@ export default function DroneAssembly() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
+      {/* Mobile fallback: the scroll-driven SVG needs width to read, so on
+          small screens show the same build story as a static step list. */}
+      <section
+        aria-label="Drone build walkthrough"
+        className="mt-8 md:hidden"
+      >
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-ink-subtle">
+          Build walkthrough
+        </div>
+        <h3 className="title mt-3 text-3xl">Building it.</h3>
+        <ol className="mt-8 space-y-6">
+          {callouts.map((c, i) => (
+            <li
+              key={c.title}
+              className="border-l border-white/10 pl-5"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-subtle">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                  {c.title}
+                </span>
+              </div>
+              <p className="mt-2 text-base leading-relaxed text-ink-muted text-haze">
+                {c.body}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </>
   );
 }

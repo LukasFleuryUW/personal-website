@@ -27,7 +27,7 @@ const work = [
 export default function DesignTeamPage() {
   return (
     <>
-      <div className="fade-up flex items-center gap-6 pt-8 md:pt-16">
+      <div className="fade-up flex items-center gap-4 pt-8 sm:gap-6 md:pt-16">
         <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] md:h-24 md:w-24">
           <Image
             src="/watflight-logo.png"
@@ -47,7 +47,7 @@ export default function DesignTeamPage() {
               design team
             </span>
           </div>
-          <h1 className="title fade-up-1 mt-2 text-balance text-5xl md:text-7xl">
+          <h1 className="title fade-up-1 mt-2 text-balance text-4xl sm:text-5xl md:text-7xl">
             WATFlight.
           </h1>
         </div>

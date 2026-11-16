@@ -27,8 +27,22 @@ export type Experience = {
     hasSound?: boolean;
     badge?: string;
   };
+  extraVideos?: {
+    src: string;
+    poster?: string;
+    alt: string;
+    hasSound?: boolean;
+    badge?: string;
+  }[];
+  extraImages?: {
+    src: string;
+    alt: string;
+    badge?: string;
+  }[];
   imageLayout?: "side" | "wide";
   mediaAspect?: string; // Tailwind aspect class for the side-by-side media strip
+  cardFit?: "cover" | "contain"; // how the landing-card cover image fits
+  cardRotate?: 0 | 90 | 180 | 270; // clockwise rotation of the landing-card cover
 };
 
 function MediaBadge({ label }: { label: string }) {
@@ -139,7 +153,7 @@ export default function ExperienceCard({
                 </li>
               ))}
             </ul>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:max-w-[85%]">
+            <div className="mt-8 grid gap-4 sm:max-w-[85%] sm:grid-cols-2">
               {imageMedia ? (
                 <MediaTile
                   media={imageMedia}
@@ -154,6 +168,34 @@ export default function ExperienceCard({
                   sizes="(min-width: 768px) 340px, 100vw"
                 />
               ) : null}
+              {data.extraVideos?.map((v, i) => (
+                <MediaTile
+                  key={`xv-${i}`}
+                  media={{
+                    type: "video",
+                    src: v.src,
+                    poster: v.poster,
+                    alt: v.alt,
+                    hasSound: v.hasSound,
+                    badge: v.badge,
+                  }}
+                  aspect={stripAspect}
+                  sizes="(min-width: 768px) 340px, 100vw"
+                />
+              ))}
+              {data.extraImages?.map((img, i) => (
+                <MediaTile
+                  key={`xi-${i}`}
+                  media={{
+                    type: "image",
+                    src: img.src,
+                    alt: img.alt,
+                    badge: img.badge,
+                  }}
+                  aspect={stripAspect}
+                  sizes="(min-width: 768px) 340px, 100vw"
+                />
+              ))}
             </div>
           </>
         ) : layout === "side" ? (

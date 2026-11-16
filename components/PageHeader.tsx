@@ -16,7 +16,7 @@ export default function PageHeader({ eyebrow, section, title, description }: Pro
           {eyebrow}
         </span>
       </div>
-      <h1 className="title fade-up-1 mt-6 max-w-4xl text-balance text-5xl md:text-7xl">
+      <h1 className="title fade-up-1 mt-6 max-w-4xl text-balance text-4xl sm:text-5xl md:text-7xl">
         {title}
       </h1>
       {description ? (
